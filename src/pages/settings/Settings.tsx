@@ -1,4 +1,3 @@
-import { Github } from "@styled-icons/boxicons-logos";
 import {
     Sync as SyncIcon,
     Globe,
@@ -9,7 +8,6 @@ import {
 import {
     Bell,
     Palette,
-    Coffee,
     IdCard,
     CheckShield,
     Flask,
@@ -271,24 +269,6 @@ export default observer(() => {
                         <ListUl size={20} />
                         <Text id="app.special.modals.changelogs.title" />
                     </ButtonItem>
-                    <a
-                        href="https://github.com/revoltchat"
-                        target="_blank"
-                        rel="noreferrer">
-                        <ButtonItem compact>
-                            <Github size={20} />
-                            <Text id="app.settings.pages.source_code" />
-                        </ButtonItem>
-                    </a>
-                    <a
-                        href="https://wiki.revolt.chat/notes/project/financial-support/"
-                        target="_blank"
-                        rel="noreferrer">
-                        <ButtonItem className={styles.donate} compact>
-                            <Coffee size={20} />
-                            <Text id="app.settings.pages.donate.title" />
-                        </ButtonItem>
-                    </a>
                     <LineDivider compact />
                     <ButtonItem
                         onClick={clientController.logoutCurrent}

@@ -6,7 +6,7 @@ import styles from "../Login.module.scss";
 import { Text } from "preact-i18n";
 import { useState } from "preact/hooks";
 
-import { Button, Category, Preloader, Tip } from "@revoltchat/ui";
+import { Button, Category, Preloader } from "@revoltchat/ui";
 
 import { I18nError } from "../../../context/Locale";
 
@@ -250,23 +250,7 @@ export const Form = observer(({ page, callback }: Props) => {
                             <Text id="login.resend" />
                         </Link>
                     </span>
-                    {!IS_REVOLT && (
-                        <>
-                            <br />
-                            <Tip palette="primary">
-                                <span>
-                                    <Text id="login.unofficial_instance" />{" "}
-                                    <a
-                                        href="https://developers.revolt.chat/faq.html"
-                                        style={{ color: "var(--accent)" }}
-                                        target="_blank"
-                                        rel="noreferrer">
-                                        <Text id="general.learn_more" />
-                                    </a>
-                                </span>
-                            </Tip>
-                        </>
-                    )}
+
                 </>
             )}
             {(page === "reset" ||

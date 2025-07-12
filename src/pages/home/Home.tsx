@@ -1,4 +1,3 @@
-import { Money } from "@styled-icons/boxicons-regular";
 import {
     Home as HomeIcon,
     PlusCircle,
@@ -174,19 +173,7 @@ export default observer(() => {
                                     <Text id="app.home.feedback" />
                                 </CategoryButton>
                             </Link>
-                            <a
-                                href="https://wiki.revolt.chat/notes/project/financial-support/"
-                                target="_blank"
-                                rel="noreferrer">
-                                <CategoryButton
-                                    action="external"
-                                    description={
-                                        <Text id="app.home.donate_desc" />
-                                    }
-                                    icon={<Money size={32} />}>
-                                    <Text id="app.home.donate" />
-                                </CategoryButton>
-                            </a>
+
                             <Link to="/settings">
                                 <CategoryButton
                                     action="chevron"
