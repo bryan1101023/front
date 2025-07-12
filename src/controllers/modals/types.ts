@@ -190,7 +190,7 @@ export type Modal = {
           type: "report_success";
           user?: User;
       }
-    | {
+        | {
           type: "reset_bot_token";
           target: { name: string, id: string },
           callback: () => Promise<void>;

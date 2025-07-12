@@ -137,6 +137,13 @@ export const UserProfile = observer(
         const badges = user.badges ?? 0;
         const flags = user.flags ?? 0;
 
+        // UI override for banned or suspended users
+        const isDeleted = !!(flags & 4) || !!(flags & 1);
+        const displayName = isDeleted ? "Account Deleted" : user.display_name ?? user.username;
+        const username = isDeleted ? "Account Deleted" : user.username;
+        const discriminator = user.discriminator;
+        const bio = isDeleted ? "Account Deleted" : profile?.content;
+
         const children = (
             <>
                 <div
@@ -168,17 +175,17 @@ export const UserProfile = observer(
                                 <span
                                     className={styles.displayname}
                                     onClick={() =>
-                                        modalController.writeText(user.username)
+                                        modalController.writeText(username)
                                     }>
-                                    {user.display_name ?? user.username}
+                                    {displayName}
                                 </span>
                                 <span
                                     className={styles.username}
                                     onClick={() =>
                                         modalController.writeText(
-                                            user.username +
+                                            username +
                                                 "#" +
-                                                user.discriminator,
+                                                discriminator,
                                         )
                                     }>
                                     <Localizer>
@@ -186,7 +193,7 @@ export const UserProfile = observer(
                                             content={
                                                 <Text id="app.special.copy_username" />
                                             }>
-                                            {user.username}#{user.discriminator}
+                                            {username}#{discriminator}
                                         </Tooltip>
                                     </Localizer>
                                 </span>
@@ -327,7 +334,7 @@ export const UserProfile = observer(
                                 ) : undefined}
                                 {flags & 4 ? (
                                     <Category>
-                                        <Error error="User is banned" />
+                                        <Error error="This user is banned" />
                                     </Category>
                                 ) : undefined}
                                 {user.bot ? (
@@ -362,14 +369,14 @@ export const UserProfile = observer(
                                         </div>
                                     </>
                                 ) : undefined}
-                                {profile?.content && (
+                                {bio && (
                                     <>
                                         <div className={styles.category}>
                                             <Text id="app.special.popovers.user_profile.sub.information" />
                                         </div>
                                         <div className={styles.markdown}>
                                             <Markdown
-                                                content={profile.content}
+                                                content={bio}
                                             />
                                         </div>
                                     </>

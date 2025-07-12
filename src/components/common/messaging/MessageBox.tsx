@@ -258,6 +258,22 @@ export default observer(({ channel }: Props) => {
     }
 
     if (!channel.havePermission("SendMessage")) {
+        // Special case for System account DM
+        if (channel.channel_type === "DirectMessage" && channel.recipient?._id === "01JZZFV835K5RH8KFZCQ6Z780Q") {
+            return (
+                <Base>
+                    <Blocked>
+                        <Action>
+                            <ShieldX size={22} />
+                        </Action>
+                        <div className="text">
+                            This is a verified moderation account that manages the platform, report any suspicious accounts that impersonate it and we will handle it appropriately
+                        </div>
+                    </Blocked>
+                </Base>
+            );
+        }
+        
         return (
             <Base>
                 <Blocked>
@@ -270,6 +286,22 @@ export default observer(({ channel }: Props) => {
                     </Action>
                     <div className="text">
                         <Text id="app.main.channel.misc.no_sending" />
+                    </div>
+                </Blocked>
+            </Base>
+        );
+    }
+
+    // Check if this is a DM with a blocked user
+    if (channel.channel_type === "DirectMessage" && channel.recipient?.relationship === "Blocked") {
+        return (
+            <Base>
+                <Blocked>
+                    <Action>
+                        <ShieldX size={22} />
+                    </Action>
+                    <div className="text">
+                        You cannot send messages to this user because you have blocked them.
                     </div>
                 </Blocked>
             </Base>

@@ -68,9 +68,9 @@ export const Username = observer(
         override,
         ...otherProps
     }: UsernameProps) => {
-        let username =
-            (user as unknown as { display_name: string })?.display_name ??
-            user?.username;
+        // UI override for banned or suspended users
+        const isDeleted = !!(user.flags & 4) || !!(user.flags & 1);
+        let username = isDeleted ? "Account Deleted" : (user as unknown as { display_name: string })?.display_name ?? user?.username;
         let color = masquerade?.colour;
         let timed_out: Date | undefined;
 

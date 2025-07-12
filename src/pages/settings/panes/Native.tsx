@@ -39,7 +39,7 @@ export function Native() {
                     setAutoStart(v);
                 }}
                 title="Start with computer"
-                description="Launch Revolt when you log into your computer."
+                description="Launch Komet when you log into your computer."
             />
 
             <Checkbox
@@ -52,7 +52,7 @@ export function Native() {
                     });
                 }}
                 title="Minimise to Tray"
-                description="Instead of closing, Revolt will hide in your tray."
+                description="Instead of closing, Komet will hide in your tray."
             />
             <Checkbox
                 value={config.discordRPC}
@@ -64,7 +64,7 @@ export function Native() {
                     });
                 }}
                 title="Enable Discord status"
-                description="Rep Revolt on your Discord status."
+                description="Rep Komet on your Discord status."
             />
             {/* <Checkbox
                 value={config.build === "nightly"}
@@ -77,8 +77,8 @@ export function Native() {
                         build,
                     });
                 }}
-                title="Revolt Nightly"
-                description="Use the beta branch of Revolt."
+                title="Komet Nightly"
+                description="Use the beta branch of Komet."
             /> */}
 
             <h3>Titlebar</h3>
@@ -93,7 +93,7 @@ export function Native() {
                     });
                 }}
                 title="Custom window frame"
-                description="Let Revolt use its own window frame."
+                description="Let Komet use its own window frame."
             />
             <Checkbox //FIXME: In Titlebar.tsx, enable .quick css
                 disabled={true}
@@ -203,7 +203,7 @@ export function Native() {
                 icon={<img src={RLogo} draggable={false} />}
                 description={<span>version {window.nativeVersion}</span>}
                 action={<Refresh size={24} />}>
-                Revolt for Desktop
+                Komet for Desktop
             </CategoryButton>
         </div>
     );

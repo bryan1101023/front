@@ -52,22 +52,28 @@ interface Props {
 }
 
 export default observer(({ user }: Props) => {
+    // UI override for banned or suspended users
+    const isDeleted = !!(user.flags & 4) || !!(user.flags & 1);
+    const displayName = isDeleted ? "Account Deleted" : user.display_name ?? user.username;
+    const username = isDeleted ? "Account Deleted" : user.username;
+    const discriminator = user.discriminator;
+
     return (
         <Header topBorder palette="secondary">
             <HeaderBase>
                 <div className="new-name">
-                    {user.display_name ?? user.username}
+                    {displayName}
                 </div>
                 <Localizer>
                     <Tooltip content={<Text id="app.special.copy_username" />}>
                         <span
                             className="username"
                             onClick={() =>
-                                modalController.writeText(user.username)
+                                modalController.writeText(username)
                             }>
-                            {user.username}
+                            {username}
                             {"#"}
-                            {user.discriminator}
+                            {discriminator}
                         </span>
                     </Tooltip>
                 </Localizer>
