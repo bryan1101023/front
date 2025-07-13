@@ -7,7 +7,7 @@ PRs for small fixes are more than welcome.
 ## Deploying a new release
 
 Ensure `.env.local` points to `https://app.revolt.chat/api`.
-
+MTM4MzcwMDk1OTQ1MTk0Mjk2Mw.Ga6oZM.yik1IpACgdUdHnkcgfyXSKFHMotNzGPdcK6q5A
 ```bash
 cd ~/deployments/revite
 git pull
